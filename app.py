@@ -1369,7 +1369,7 @@ elif nav == "📄 View Forms":
         #         f"📥 Export &amp; Print — {city_name}</div>",
         #         unsafe_allow_html=True)
 
-        btn_cols = st.columns([1, 1] + [0.8] * len(forms))
+        btn_cols = st.columns([1] + [0.8] * len(forms))
 
         #     # # Print button - uses browser print
         #     # with btn_cols[0]:
@@ -1395,7 +1395,7 @@ elif nav == "📄 View Forms":
         #     #     )
 
             # Combined PDF
-        with btn_cols[1]:
+        with btn_cols[0]:
                 with st.spinner("Building PDF…"):
                     all_pdf = _make_combined_pdf(forms, city_name, rpf, dotr_b64, palafox_b64)
                     # Get first and last points of all forms combined
@@ -1414,7 +1414,7 @@ elif nav == "📄 View Forms":
         for i, f in enumerate(forms):
                 first_pt = f["points_df"].iloc[0]["_num"]
                 last_pt = f["points_df"].iloc[-1]["_num"]
-                with btn_cols[2 + i]:
+                with btn_cols[1 + i]:
                     with st.spinner(f"PDF {i+1}…"):
                         single_pdf = _make_single_pdf(
                             f["points_df"], f["form_num"], len(forms),
