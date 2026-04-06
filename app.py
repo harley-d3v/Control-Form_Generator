@@ -1363,39 +1363,39 @@ elif nav == "📄 View Forms":
         st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
 
         # Download / Print bar
-        with st.container(border=True):
-            st.markdown(
-                f"<div style='font-size:13px;font-weight:600;color:#1A2C3E;margin-bottom:12px;'>"
-                f"📥 Export &amp; Print — {city_name}</div>",
-                unsafe_allow_html=True)
+        # with st.container(border=True):
+        #     st.markdown(
+        #         f"<div style='font-size:13px;font-weight:600;color:#1A2C3E;margin-bottom:12px;'>"
+        #         f"📥 Export &amp; Print — {city_name}</div>",
+        #         unsafe_allow_html=True)
 
-            btn_cols = st.columns([1, 1] + [0.8] * len(forms))
+        btn_cols = st.columns([1, 1] + [0.8] * len(forms))
 
-            # Print button - uses browser print
-            with btn_cols[0]:
-                st.markdown(
-                    """
-                    <button onclick="window.print();" style="
-                        width: 100%;
-                        padding: 0.5rem 1rem;
-                        background-color: #FFFFFF;
-                        color: #1A2C3E;
-                        border: 1px solid #D0D5DD;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        font-size: 14px;
-                        font-weight: 500;
-                        transition: all 0.2s;
-                    " onmouseover="this.style.backgroundColor='#F8FAFE'" 
-                    onmouseout="this.style.backgroundColor='#FFFFFF'">
-                        🖨️ Print All
-                    </button>
-                    """,
-                    unsafe_allow_html=True
-                )
+        #     # # Print button - uses browser print
+        #     # with btn_cols[0]:
+        #     #     st.markdown(
+        #     #         """
+        #     #         <button onclick="window.print();" style="
+        #     #             width: 100%;
+        #     #             padding: 0.5rem 1rem;
+        #     #             background-color: #FFFFFF;
+        #     #             color: #1A2C3E;
+        #     #             border: 1px solid #D0D5DD;
+        #     #             border-radius: 8px;
+        #     #             cursor: pointer;
+        #     #             font-size: 14px;
+        #     #             font-weight: 500;
+        #     #             transition: all 0.2s;
+        #     #         " onmouseover="this.style.backgroundColor='#F8FAFE'" 
+        #     #         onmouseout="this.style.backgroundColor='#FFFFFF'">
+        #     #             🖨️ Print All
+        #     #         </button>
+        #     #         """,
+        #     #         unsafe_allow_html=True
+        #     #     )
 
             # Combined PDF
-            with btn_cols[1]:
+        with btn_cols[1]:
                 with st.spinner("Building PDF…"):
                     all_pdf = _make_combined_pdf(forms, city_name, rpf, dotr_b64, palafox_b64)
                     # Get first and last points of all forms combined
@@ -1411,7 +1411,7 @@ elif nav == "📄 View Forms":
                 )
 
             # Per-form PDF buttons
-            for i, f in enumerate(forms):
+        for i, f in enumerate(forms):
                 first_pt = f["points_df"].iloc[0]["_num"]
                 last_pt = f["points_df"].iloc[-1]["_num"]
                 with btn_cols[2 + i]:
